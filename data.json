@@ -1,0 +1,18 @@
+[
+  {
+    "model": "catalog.Category",
+    "pk": 1,
+    "fields": {
+      "name": "Бананы",
+      "description": "Фрукт"
+    }
+  },
+  {
+    "model": "catalog.Category",
+    "pk": 2,
+    "fields": {
+      "name": "Апельсины",
+      "description": "Фрукт"
+    }
+  }
+]
