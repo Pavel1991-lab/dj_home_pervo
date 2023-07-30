@@ -17,36 +17,35 @@
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Skystore</h1>
-    <p class="lead">Skystore - это отличный вариант хранения ваших плагинов и примеров кода, который вы бы хотели
-        продать</p>
+    <p class="lead">Skystore - это отличный магазин для покупки овощей, фруктов, ягод</p>
 </div>
 
 <div class="container">
     <div class="row text-center">
+        {%for object in object_list%}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Удобный сервис рассылок</h4>
+                    <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$ 140</h1>
+                    <h1 class="card-title pricing-card-title">{{ object.purchase_price }}</h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- Неограниченная лицензия</li>
-                        <li>- Поддержка</li>
-                        <li>- Установка на сервер</li>
-                        <li>- Получение обновлений</li>
+                        <li>- {{ object.description|slice:":100" }}</li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
+</div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
                 SkyStore
-                <small class="d-block mb-3 text-muted">&copy; 2023</small>
+                <small class="d-block mb-3 text-muted">&copy; {{ now|date:'Y' }}</small>
             </div>
             <div class="col-6 col-md">
                 <h5>Категории</h5>
