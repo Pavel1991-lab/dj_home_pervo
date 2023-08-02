@@ -12,9 +12,6 @@ def home(request):
     return render(request, 'catalog/home.html', context)
 
 
-# def home(request):
-#     return render(request, 'catalog/home.html')
-
 
 def contacts(request):
     if request.method == 'POST':
@@ -23,3 +20,12 @@ def contacts(request):
             message = request.POST.get('message')
             print(f'{name}, {phone}, {message}')
     return render(request, 'catalog/contacts.html')
+
+
+def good(request, pk):
+    from catalog.models import Product
+    catrgory_item = Product.objects.get(pk=pk)
+    context = {
+        'object_list':  catrgory_item
+    }
+    return render(request, 'catalog/good.html', context)
