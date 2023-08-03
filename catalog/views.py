@@ -17,25 +17,32 @@ class Productlistview(ListView):
 #
 
 
-def contacts(request):
-    if request.method == 'POST':
-            name = request.POST.get('name')
-            phone = request.POST.get('phone')
-            message = request.POST.get('message')
-            print(f'{name}, {phone}, {message}')
-    return render(request, 'catalog/contacts.html')
+# def contacts(request):
+#     if request.method == 'POST':
+#             name = request.POST.get('name')
+#             phone = request.POST.get('phone')
+#             message = request.POST.get('message')
+#             print(f'{name}, {phone}, {message}')
+#     return render(request, 'catalog/contacts.html')
+
+
+class Contactlistview(ListView):
+    model = Product
+    template_name = 'catalog/contacts.html'
 
 
 
-# class ProductDetailView(DetailView):
-#     model = Product
-#     template_name = 'catalog/good.html'
 
 
-def good(request, pk):
-    from catalog.models import Product
-    catrgory_item = Product.objects.get(pk=pk)
-    context = {
-        'object_list':  catrgory_item
-    }
-    return render(request, 'catalog/good.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/good.html'
+
+
+# def good(request, pk):
+#     from catalog.models import Product
+#     catrgory_item = Product.objects.get(pk=pk)
+#     context = {
+#         'object_list':  catrgory_item
+#     }
+#     return render(request, 'catalog/good.html', context)
