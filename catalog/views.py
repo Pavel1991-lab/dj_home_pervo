@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from catalog.models import Product
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
+from catalog.models import Product, Blog
+
+
+
 
 class Productlistview(ListView):
     model = Product
@@ -34,10 +38,10 @@ class Contactlistview(ListView):
 
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'catalog/good.html'
-
+# class ProductDetailView(ListView):
+#     model = Product
+#     template_name = 'catalog/good_detail.html'
+#
 
 # def good(request, pk):
 #     from catalog.models import Product
@@ -45,4 +49,26 @@ class ProductDetailView(DetailView):
 #     context = {
 #         'object_list':  catrgory_item
 #     }
-#     return render(request, 'catalog/good.html', context)
+#     return render(request, 'catalog/good_detail.html', context)
+
+class ProductByCategoryListView(DetailView):
+    model = Product
+    template_name = 'catalog/good_detail.html'
+
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     queryset = queryset.filter(id=self.kwargs.get('pk'))
+    #     return queryset
+    #
+    # def get_context_data(self, *args, **kwargs):
+    #     context_data = super().get_context_data(*args, **kwargs)
+    #     category_item = Product.objects.get(pk=self.kwargs.get('pk'))
+    #     context_data['id'] = category_item
+    #     return context_data
+
+class Productcreateview(CreateView):
+    model = Blog
+    fields = ['title', 'content', 'preview']
+    template_name = 'catalog/blog_form.html'
+    success_url = reverse_lazy('home')
+

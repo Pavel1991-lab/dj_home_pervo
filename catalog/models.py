@@ -15,4 +15,14 @@ class Product(models.Model):
     last_modified_date = models.DateTimeField(auto_now=True)  # дата последнего изменения
 
 
+class Blog(models.Model):
+    title = models.CharField(max_length=100, verbose_name='название')
+    slug = models.SlugField(unique=True)
+    content = models.TextField(verbose_name='содержимое')
+    preview = models.ImageField(upload_to='blog_previews/', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=False)
+    views_count = models.IntegerField(default=0)
+
+
 

@@ -1,0 +1,19 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+     <div class="row text-center">
+         <div class = 'col-18'>
+             <div class = 'card'>
+                 <div class = 'card-body'>
+                     <form method="post">
+                         {% csrf_token %}
+                         {{ form.as_p}}
+                         <button type="submit" class="btn-success">Создать</button>
+                     </form>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+{% endblock %}
