@@ -17,7 +17,7 @@ class Product(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=100, verbose_name='название')
-    slug = models.SlugField(unique=True)
+    slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
     content = models.TextField(verbose_name='содержимое')
     preview = models.ImageField(upload_to='blog_previews/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
