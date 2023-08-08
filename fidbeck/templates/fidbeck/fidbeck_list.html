@@ -1,0 +1,45 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Ваши отзывы</h1>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+        {%for object in object_list%}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h1 class="my-0 font-weight-normal">{{ object.title }}</h1>
+                   <div class="card-header">
+                   <a href="{% url 'fidbeck:view' object.pk %}" class="btn btn-primary">Перейти к просмотру</a>
+                   <a href="{% url 'fidbeck:edit' object.pk %}" class="btn btn-secondary">Изменить</a>
+                      <a href="{% url 'fidbeck:delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                   </div>
+                </div>
+                <div class="card-body">
+                    <img src='{{ object.preview|mymedia }}' alt="Здесь должна быть ваша картинка" class="img-fluid" style="width: 150px; height: 100px;">
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- {{ object.content }}</li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row text-center">
+
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.title }} ({{ object.slug }})</h4>
+                </div>
+                <div class="card-body">
+                    <img src='{{ object.preview|mymedia }}' alt="Здесь должна быть ваша картинка" class="img-fluid" style="width: 150px; height: 100px;">
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- {{ object.content }}</li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

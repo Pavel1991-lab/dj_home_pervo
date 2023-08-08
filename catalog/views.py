@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
-from catalog.models import Product, Blog
+from catalog.models import Product
 from pytils.translit import slugify
 
 
@@ -16,7 +16,7 @@ class Productlistview(ListView):
 #     context = {
 #         'object_list': product_list
 #     }
-#     return render(request, 'catalog/home.html', context)
+#     return render(request, 'catalog/fidbeck_list.html', context)
 #
 
 
@@ -65,21 +65,21 @@ class ProductByCategoryListView(DetailView):
     #     context_data['id'] = category_item
     #     return context_data
 
-class Productcreateview(CreateView):
-    model = Blog
-    fields = ['title', 'content', 'preview']
-    template_name = 'catalog/blog_form.html'
-    success_url = reverse_lazy('blog_form.html')
-
-    def form_valid(self, form):
-        if form.is_valid():
-            new_mat = form.save()
-            new_mat.slug = slugify(new_mat.title)
-            new_mat.save()
-        return super().form_valid(form)
-
-
-
-class Fitbeklistview(ListView):
-    model =  Blog
+# class Productcreateview(CreateView):
+#     model = Blog
+#     fields = ['title', 'content', 'preview']
+#     template_name = 'catalog/blog_form.html'
+#     success_url = reverse_lazy('blog_form.html')
+#
+#     def form_valid(self, form):
+#         if form.is_valid():
+#             new_mat = form.save()
+#             new_mat.slug = slugify(new_mat.title)
+#             new_mat.save()
+#         return super().form_valid(form)
+#
+#
+#
+# class Fitbeklistview(ListView):
+#     model =  Blog
 
