@@ -8,8 +8,8 @@
                  <div class = 'card-body'>
                      <form method="post">
                          {% csrf_token %}
-                         {{ form.as_p}}
-                         <button type="submit" class="btn-success">Создать</button>
+                         <p>Хотите удалить отзыв "{{object.title}}"?</p>
+                         <button type="submit" class="btn-success">Подтвердить</button>
                      </form>
                  </div>
              </div>
