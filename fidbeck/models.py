@@ -8,8 +8,10 @@ class Fidbeck(models.Model):
     content = models.TextField(verbose_name='содержимое')
     preview = models.ImageField(upload_to='product_images', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    is_published = models.BooleanField(default=False)
-    views_count = models.IntegerField(default=0)
+
+
+    views_count = models.IntegerField(default=0, verbose_name='просмотры')
+    is_published = models.BooleanField(default=True)
 
 
 

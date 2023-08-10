@@ -9,6 +9,9 @@
 
 <div class="container">
     <div class="row text-center">
+        <div class="col-12 mb-5">
+            <a class="btn btn-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
+        </div>
         {%for object in object_list%}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
@@ -24,6 +27,7 @@
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="location.href='/good/{{ object.id }}'">Подробнее</button>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="location.href=&quot;{% url 'fidbeck:create' %}&quot;">Оставить отзыв</button>
+                     <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-primary">Обновить</a>
                 </div>
             </div>
         </div>
