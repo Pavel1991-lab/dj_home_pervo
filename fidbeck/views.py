@@ -19,6 +19,7 @@ class Fidbeckcreateview(CreateView):
 
 
 
+
 class FidbecklistView(ListView):
     model = Fidbeck
 
