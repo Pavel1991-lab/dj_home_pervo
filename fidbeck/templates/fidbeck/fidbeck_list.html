@@ -14,9 +14,9 @@
                 <div class="card-header">
                     <h1 class="my-0 font-weight-normal">{{ object.title }}</h1>
                    <div class="card-header">
-                   <a href="{% url 'fidbeck:view' object.pk %}" class="btn btn-primary">Перейти к просмотру</a>
-                   <a href="{% url 'fidbeck:edit' object.pk %}" class="btn btn-secondary">Изменить</a>
-                      <a href="{% url 'fidbeck:delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                   <a href="{% url 'fidbeck:view' object.pk object.slug %}" class="btn btn-primary">Перейти к просмотру</a>
+                   <a href="{% url 'fidbeck:edit' object.pk object.slug %}" class="btn btn-secondary">Изменить</a>
+                      <a href="{% url 'fidbeck:delete' object.pk object.slug %}" class="btn btn-danger">Удалить</a>
                    </div>
                 </div>
                 <div class="card-body">
