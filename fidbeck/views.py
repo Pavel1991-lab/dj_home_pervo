@@ -41,12 +41,11 @@ class Fidbecdetaileview(DetailView):
 
 
 class Fidbecupdateview(UpdateView):
-    model = Fidbeck
-    fields = ['title', 'content', 'preview']
-    success_url = reverse_lazy('fidbeck:list')
+        model = Fidbeck
+        fields = ['title', 'content', 'preview']
 
-    # def get_success_url(self):
-    #     return reverse('fidbeck:view', args=[self.kwargs.get('pk')])
+        def get_success_url(self):
+            return reverse('fidbeck:view', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
 
 
 class FidbecdeleteView(DeleteView):
