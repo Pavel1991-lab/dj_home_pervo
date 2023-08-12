@@ -1,19 +1,35 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-     <div class="row text-center">
-         <div class = 'col-18'>
-             <div class = 'card'>
-                 <div class = 'card-body'>
-                     <form method="post" enctype="multipart/form-data">
-                         {% csrf_token %}
-                         {{ form.as_p}}
-                         <button type="submit" class="btn-success">Создать</button>
-                     </form>
+<div class="col-12">
+    <form method="post" enctype="multipart/form-data">
+
+         <div class="row text-center">
+             <div class = 'col-18'>
+                 <div class = 'card'>
+                     <div class = 'card-body'>
+                             {% csrf_token %}
+                             {{ form.as_p}}
+                             <button type="submit" class="btn-success">Создать</button>
+                     </div>
                  </div>
              </div>
-         </div>
+             <div class="col-6">
+                  <div class = 'card'>
+                      <h3 class="card-title">
+                          Версия продукта
+                      </h3>
+                     <div class = 'card-body'>
+                         {{ formset.management_form }}
+                         {% for form in formset.forms %}
+                             {{ form.as_p }}
+                         {% endfor %}
+                     </div>
+                 </div>
+             </div>
 
-     </div>
+         </div>
+    </form>
+</div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='название')
     description = models.TextField(verbose_name='описание')
@@ -15,14 +15,11 @@ class Product(models.Model):
     last_modified_date = models.DateTimeField(auto_now=True)  # дата последнего изменения
 
 
-# class Blog(models.Model):
-#     title = models.CharField(max_length=100, verbose_name='название')
-#     slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
-#     content = models.TextField(verbose_name='содержимое')
-#     preview = models.ImageField(upload_to='blog_previews', blank=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     is_published = models.BooleanField(default=False)
-#     views_count = models.IntegerField(default=0)
-#
-#
-#
+class Version(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='продукт')
+    version_number = models.CharField(max_length=20, verbose_name='номер версии')
+    version_name = models.CharField(max_length=100, verbose_name='имя версии')
+    is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.version_name
