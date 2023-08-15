@@ -1,18 +1,11 @@
-[
-  {
-    "model": "catalog.Category",
-    "pk": 1,
-    "fields": {
-      "name": "Бананы",
-      "description": "Фрукт"
-    }
-  },
-  {
-    "model": "catalog.Category",
-    "pk": 2,
-    "fields": {
-      "name": "Апельсины",
-      "description": "Фрукт"
-    }
-  }
-]
+[{"model": "catalog.category", "pk": 1, "fields": {"name": "Фрукт", "description": "Растет на дереве"}},
+  {"model": "catalog.category", "pk": 2, "fields": {"name": "Овощь", "description": "Растет на огороде"}},
+  {"model": "catalog.category", "pk": 3, "fields": {"name": "Ягода", "description": "Вкусная"}},
+  {"model": "catalog.product", "pk": 19, "fields": {"name": "Картошка", "description": "У нас вкусная картоошка по доступным ценам, оптом, от 100 кг скидка 25%", "image": "product_images/картошка.jpg", "category": 2, "purchase_price": "30.00", "created_date": "2023-08-02T19:57:54.697Z", "last_modified_date": "2023-08-14T19:56:44.809Z"}},
+  {"model": "catalog.product", "pk": 20, "fields": {"name": "Малина", "description": "Вкуснейшая ягода, полезная для зрения, по очень хорошей цене, всего 200 рублей за кг., при покупке от 10 кг. Меньше 10 кг не продаем, едим сами.", "image": "product_images/малиа.jpeg", "category": 3, "purchase_price": "200.00", "created_date": "2023-08-02T19:57:54.697Z", "last_modified_date": "2023-08-02T19:57:54.697Z"}},
+  {"model": "catalog.product", "pk": 21, "fields": {"name": "Яблоки", "description": "У нас вкусные и полезные яблоки с местных садов. При покупке оптом от 50 кг скидка 20%", "image": "product_images/яблоки.jpg", "category": 1, "purchase_price": "100.00", "created_date": "2023-08-02T19:57:54.697Z", "last_modified_date": "2023-08-02T19:57:54.697Z"}},
+  {"model": "catalog.product", "pk": 22, "fields": {"name": "Груши", "description": "Спелые, сочные груши только в нашем магазине. При покупке оптом от 100 кг скидка 10%", "image": "product_images/гр.jpg", "category": 1, "purchase_price": "150.00", "created_date": "2023-08-02T19:57:54.697Z", "last_modified_date": "2023-08-02T19:57:54.697Z"}},
+  {"model": "catalog.product", "pk": 23, "fields": {"name": "Брусника", "description": "Брусника из Криушинского леса. Очень полезная.", "image": "product_images/брусника.JPG", "category": 3, "purchase_price": "500.00", "created_date": "2023-08-10T20:18:04.032Z", "last_modified_date": "2023-08-14T19:37:04.324Z"}},
+  {"model": "catalog.version", "pk": 1, "fields": {"product": 23, "version_number": "3", "version_name": "Клепиковская", "is_active": true}},
+  {"model": "catalog.version", "pk": 2, "fields": {"product": 23, "version_number": "4", "version_name": "Щербатовская", "is_active": true}},
+  {"model": "catalog.version", "pk": 3, "fields": {"product": 19, "version_number": "2", "version_name": "Первинская", "is_active": true}}]

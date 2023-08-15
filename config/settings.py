@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'catalog',
     'fidbeck',
+    'users',
     'crispy_forms',
 ]
 
@@ -149,3 +150,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
+
+
+AUTH_USER_MODEL = 'users.User'
+LOGOUT_REDIRECT_URL = '/'
+
