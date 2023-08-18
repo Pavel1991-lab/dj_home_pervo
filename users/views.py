@@ -1,12 +1,17 @@
 from django.conf import settings
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
+from django.shortcuts import redirect
+from django.template.context_processors import request
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views import View
+from django.views.generic import CreateView, View
 from django.core.mail import send_mail
 from users.models import User
 
 from users.forms import UserForm
+
+# from users.utils import send_mail_for_verify
 
 
 class LoginView(BaseLoginView):
@@ -33,9 +38,14 @@ class RegisterView(CreateView):
 
         )
 
+        # send_mail_for_verify(request)
+        # return redirect('confirm email')
+        #
+
         return super().form_valid(form)
 
 
 
-
+# class  EmailVerify(View):
+#     pass
 

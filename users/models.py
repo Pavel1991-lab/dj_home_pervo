@@ -12,7 +12,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, verbose_name= 'номер телефона')
     country = models.CharField(max_length=100, verbose_name= 'страна')
 
-    # email_verify = models.BooleanField(default=False)
+    email_verify = models.BooleanField(default=False)
 
 
 
