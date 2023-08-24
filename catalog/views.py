@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -22,8 +24,8 @@ class ProductByCategoryListView(DetailView):
     model = Product
     template_name = 'catalog/good_detail.html'
 
-
-class ProductCreate(CreateView):
+# @login_required
+class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
@@ -41,8 +43,8 @@ class ProductCreate(CreateView):
                 return self.form_invalid(form)
 
         return super().form_valid(form)
-
-class ProductUpdateview(UpdateView):
+# @login_required
+class ProductUpdateview(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
@@ -53,6 +55,7 @@ class ProductUpdateview(UpdateView):
         self.object = form.save()
         if formset.is_valid():
             formset.instance = self.object
+            self.object.owner = self.request.user
             formset.save()
 
 
@@ -68,8 +71,3 @@ class ProductUpdateview(UpdateView):
             context_data['formset'] = VersionFormSet(instance=self.object)
 
         return context_data
-
-
-
-
-

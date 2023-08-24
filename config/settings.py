@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'fidbeck',
     'users',
     'crispy_forms',
-    # 'django.contrib.sites',
-    # 'account'
 ]
 
 
@@ -62,8 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'account.middleware.LocaleMiddleware',
-    # 'account.middleware.TimezoneMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -81,7 +77,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'account.context_processors.account'
             ],
         },
     },
@@ -169,8 +164,3 @@ EMAIL_HOST_PASSWORD = 'inhiakuismxemngl'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
-
-ACCOUNT_EMAIL_UNIQUE = True
-ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
-
-# SITE_ID = 2

@@ -21,10 +21,13 @@
                           Версия продукта
                       </h3>
                      <div class="card-body">
+
                          {{ formset.management_form }}
+
                          {% for form in formset.forms %}
                              {{ form.as_p }}
                          {% endfor %}
+
                      </div>
                  </div>
              </div>
