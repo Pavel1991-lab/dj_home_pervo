@@ -42,7 +42,12 @@ class ProductCreate(LoginRequiredMixin, CreateView):
                 form.add_error(None, f"Запрещенное слово '{word}' найдено в названии или описании продукта.")
                 return self.form_invalid(form)
 
+        # Устанавливаем текущего пользователя как владельца продукта
+        form.instance.user = self.request.user
+
         return super().form_valid(form)
+
+
 # @login_required
 class ProductUpdateview(LoginRequiredMixin, UpdateView):
     model = Product
@@ -55,7 +60,7 @@ class ProductUpdateview(LoginRequiredMixin, UpdateView):
         self.object = form.save()
         if formset.is_valid():
             formset.instance = self.object
-            self.object.owner = self.request.user
+            self.object.email = self.request.user
             formset.save()
 
 
@@ -71,3 +76,8 @@ class ProductUpdateview(LoginRequiredMixin, UpdateView):
             context_data['formset'] = VersionFormSet(instance=self.object)
 
         return context_data
+
+    def your_view(request):
+        registered_by = request.user.email
+
+        return registered_by

@@ -6,6 +6,10 @@ from catalog.models import Product, Version
 class ProductForm(forms.ModelForm):
     FORBIDDEN = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # привязываем текущего пользователя к полю user
+        return super().form_valid(form)
+
     def clean_name(self):
         name = self.cleaned_data.get('name')
 
