@@ -31,6 +31,7 @@
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="location.href='/good/{{ object.id }}'">Подробнее</button>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="location.href=&quot;{% url 'fidbeck:create' %}&quot;">Оставить отзыв</button>
                      <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-primary">Обновить</a>
+                      <li>- {{ object.is_published }}</li>
                 </div>
             </div>
         </div>

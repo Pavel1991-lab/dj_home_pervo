@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
+from django.http import Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
@@ -49,10 +50,23 @@ class ProductCreate(LoginRequiredMixin, CreateView):
 
 
 # @login_required
+class Http401:
+    pass
+
+
 class ProductUpdateview(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+    #permission_required = 'catalog.change_product'
+
+
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.user != self.request.user and not (self.request.user.is_superuser or self.request.user.is_staff):
+            raise Http401("У вас нет прав для редактирования этого продукта")
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
 
