@@ -31,4 +31,9 @@ class VersionForm(forms.ModelForm):
         fields = ['product', 'version_number', 'version_name', 'is_active']
 
 
+class ModeratorProductForm(ProductForm):
+    class Meta:
+        model = Product
+        fields = ['description', 'category', 'is_published']
+
 
