@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -92,8 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sadovod',
-        'USER': 'pavel',
-        'PASSWORD': 'password',
+        'USER': 'paha',
+        'PASSWORD': os.getenv('KEY'),
         'HOST': 'localhost'
     }
 }
@@ -164,3 +164,17 @@ EMAIL_HOST_PASSWORD = 'inhiakuismxemngl'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
+
+
+CASHES_ENABLED = os.getenv('CASHES_ENABLED') == 'True'
+
+
+
+if CASHES_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION":
+                os.getenv('CASHES_LOCATION')
+        }
+    }

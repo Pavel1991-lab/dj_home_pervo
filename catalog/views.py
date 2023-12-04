@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
@@ -5,9 +6,9 @@ from django.http import Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
 from pytils.translit import slugify
-
+from catalog.services import get_category_cache
 from catalog.forms import ProductForm, VersionForm, ModeratorProductForm
 from rest_framework.permissions import BasePermission
 
@@ -118,3 +119,16 @@ class ProductUpdateview(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
         registered_by = request.user.email
 
         return registered_by
+
+
+class CategoryListView(ListView):
+    model = Category
+
+    def get_queryset(self):
+        if settings.CACHE_ENABLED:
+            category_list = get_category_cache()
+            return category_list
+        return super().get_queryset()
+
+
+
